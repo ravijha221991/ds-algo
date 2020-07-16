@@ -9,17 +9,7 @@ public class SubsetSum {
 		int N = array.length;
 		System.out.println("Recursive Approach:"+subsetSumRecursive(array,SUM,N));
 		
-		
-		boolean dp[][] = new boolean[N+1][SUM+1];
-		for(int j=0;j<SUM+1;j++) {
-			dp[0][j]=false;
-		}
-		for(int i=0;i<N+1;i++) {
-			dp[i][0]=true;
-		}
-			
-		
-		System.out.println("Top Down Approach:"+topDown(array,SUM,N,dp));
+		System.out.println("Top Down Approach:"+topDown(array,SUM,N));
 		
 	}
 
@@ -39,7 +29,16 @@ public class SubsetSum {
 	}
 	
 	
-	private static boolean topDown(int[] array, int SUM, int N, boolean[][] dp) {
+	public static boolean topDown(int[] array, int SUM, int N) {
+		
+		boolean dp[][] = new boolean[N+1][SUM+1];
+		for(int j=0;j<SUM+1;j++) {
+			dp[0][j]=false;
+		}
+		for(int i=0;i<N+1;i++) {
+			dp[i][0]=true;
+		}
+		
 		for(int i=1;i<N+1;i++) {
 			for(int j=1;j<SUM+1;j++) {
 				if(array[i-1]<=j) {
